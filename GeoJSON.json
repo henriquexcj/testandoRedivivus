@@ -1,0 +1,141 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.513946027046845,
+            -46.456659434045385
+          ]
+        },
+        "properties": {
+          "tipo": "EcoPonto",
+          "nome_do_ponto": "EcoPonto Imperador",
+          "residuos": [
+            "papel",
+            "plástico"
+          ],
+          "endereco": "Av. Ribeirão Jacu, n° 201 (Baixo do Viaduto Jacu Pêssego)",
+          "cep": "08050-420",
+          "horario": "De segunda a sexta-feira das 08h às 17h, aos sábados das 09h às 14h",
+          "tel": "--"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.516907455245917,
+            -46.48281349756469
+          ]
+        },
+        "properties": {
+          "tipo": "EcoPonto",
+          "nome_do_ponto": "GCM - Comando Operacional Leste",
+          "residuos": [
+            "papel",
+            "plástico",
+            "metal",
+            "vidro"
+          ],
+          "endereco": "Estr. de Mogi das Cruzes, 1860 - Vila Rio Branco - São Paulo - SP",
+          "cep": "03682-130",
+          "horario": "--",
+          "tel": "156"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.52309205973849,
+            -46.482705481530495
+          ]
+        },
+        "properties": {
+          "tipo": "EcoPonto",
+          "nome_do_ponto": "Ecoponto Jardim São Nicolau",
+          "residuos": [
+            "papel",
+            "plástico",
+            "alumínio",
+            "vidro",
+            "resíduos de construções civis"
+          ],
+          "endereco": "R. Agreste de Itabaiana, 590 - Vila União (Zona Leste) - São Paulo - SP",
+          "cep": "03683-000",
+          "horario": "Segunda a sábado, das 6h às 22h e aos domingos e feriados das 6h às 18h",
+          "tel": "156"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.529200737762892,
+            -46.47616188511209
+          ]
+        },
+        "properties": {
+          "tipo": "EcoPonto",
+          "nome_do_ponto": "Central de Abastecimento Leste",
+          "residuos": [
+            "Óleo de cozinha"
+          ],
+          "endereco": "Av. Imperador, 1900 - São Miguel - São Paulo - SP",
+          "cep": "08050-000",
+          "horario": "Terça a Sábado das 7h às 18h. Domingo das 7h às 13h.",
+          "tel": "156"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.51770318446589,
+            -46.477243907237074
+          ]
+        },
+        "properties": {
+          "tipo": "Escola",
+          "nome_do_ponto": "EMEF Professora Wanny Salgado Rocha",
+          "residuos": [
+            "Óleo de cozinha"
+          ],
+          "endereco": "R. Sílvio Ribeiro dos Santos, 104 - Vila Uniao (Zona Leste) - São Paulo - SP",
+          "cep": "03683-040",
+          "horario": "Terça a Sábado das 7h às 18h. Domingo das 7h às 13h.",
+          "tel": "(11)22804192"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -23.529200737762892,
+            -46.47616188511209
+          ]
+        },
+        "properties": {
+          "tipo": "EcoPonto",
+          "nome_do_ponto": "UBS Jardim São Nicolau",
+          "residuos": [
+            "Óleo de cozinha",
+            "Medicamentos"
+          ],
+          "endereco": "R. Brook Taylor, 30 - Jardim Nordeste - São Paulo - SP",
+          "cep": "03690-000",
+          "horario": "Segunda a Sexta das 7h às 19h.",
+          "tel": "(11)22807508"
+        }
+      }
+    ]
+  }
+  

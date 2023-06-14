@@ -1,0 +1,48 @@
+<?php
+$db_host = 'aws.connect.psdb.cloud';
+$db_username = 'k6tr9o139n7svyh6qj2d';
+$db_password = 'pscale_pw_U7eejIxkqYEYEZlhbQgJOS61lyP6t9YuMQMsnh73LG5';
+$db_name = 'bdredivivus';
+
+$dsn = "mysql:host=$db_host;dbname=$db_name";
+$options = array(
+  PDO::MYSQL_ATTR_SSL_CA => '/path/to/cacert.pem', // Substitua pelo caminho correto do certificado CA
+  PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false // Define para não verificar o certificado do servidor
+);
+
+try {
+  $pdo = new PDO($dsn, $db_username, $db_password, $options);
+
+  // Verifica se o formulário foi enviado
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtém os valores dos campos do formulário
+    $star = $_POST["star"];
+    $name = $_POST["name"];
+    $comment = $_POST["comment"];
+    
+    // Valide os dados recebidos conforme necessário
+
+    // Insere os dados no banco de dados
+    $stmt = $pdo->prepare("INSERT INTO tabela (star, comment, name) VALUES (:star, :comment, :name)");
+
+    // Vincula os valores dos parâmetros da consulta
+    $stmt->bindParam(':star', $star);
+    $stmt->bindParam(':comment', $comment);
+    $stmt->bindParam(':name', $name);
+
+    // Executa a consulta
+    $stmt->execute();
+
+    // Exibe uma mensagem de sucesso
+    echo 'Dados salvos com sucesso!';
+  } else {
+    // Caso o formulário não tenha sido enviado, exiba uma mensagem de erro ou redirecione para a página adequada
+    echo "Ocorreu um erro no envio do formulário.";
+  }
+} catch (PDOException $e) {
+  // Em caso de erro, exibe a mensagem de erro
+  echo 'Erro ao salvar os dados: ' . $e->getMessage();
+}
+
+var_dump($star, $name, $comment);
+?>

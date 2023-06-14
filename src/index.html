@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>RediVivus</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <style>
+    .mapboxgl-ctrl-icon {
+      background-image: url('assets/img/logo.png'); /* Substitua pelo caminho da imagem do ícone */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  </style>
+ 
+  
+  <!-- SDK do Mapbox -->
+  <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css' rel='stylesheet' /> -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.min.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.3/mapbox-gl-geocoder.css' rel='stylesheet' />
+  <!-- Inclua a biblioteca Mapbox Geocoding -->
+  <!--<link rel="stylesheet" href="caminho/para/leaflet.css">
+  <script src="caminho/para/leaflet.js"></script>
+
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script> -->
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Yummy
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- PWA conection -->
+  <meta name="theme-color" content="#f9f9f9">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="canonical" href="Redivivuseco.vercel.app">
+
+</head>
+
+<body>
+  <!-- ======= IMAGEM DA LOGO INICIO ======= -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(function(){
+            console.log('service worker registered');
+          })
+          .catch(function(){
+            console.warn('service worker failed');
+          })
+      }
+    </script>
+  
+  <?php
+session_start();
+
+?>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logo.png" alt="">
+        <h1>REDIVIVUS</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="dropdown"><a href="#"><span>Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#hero">Inicio</a></li>
+              <!--<li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul> 
+              </li> -->
+              <li><a href="#aprenda">Aprenda sobre reciclagem</a></li>
+              <li><a href="#menu">Maps RediVivus</a></li>
+              <li><a href="#events">Notícias</a></li>
+              <li><a href="#avalie">Avaliar Site</a></li>
+              <li><a href="#sobrenos">Sobre nós</a></li>
+              <li><a class="btn-book-a-table" href="#menu">Buscar Ponto de Coleta</a></li>
+            </ul>
+          </li>
+          <!--<li><a href="#contact">Contact</a></li>-->
+        </ul>
+      </nav><!-- .navbar -->
+
+      <!--<nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#aprenda">Aprenda Reciclar</a></li>
+          <li><a href="#menu">Maps</a></li>
+          <li><a href="#events">Últimas Notícias</a></li>
+          <li><a href="#avalie">Avalie Nosso Site</a></li>
+          <li><a href="#contact">Fale Conosco</a></li>
+          <li><a href="#sobrenos">Quem Somos Nós</a></li>
+        </ul>
+      </nav>--><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+      <div class="row justify-content-between gy-5">
+        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+          <h2 data-aos="fade-up">RECICLE,<br>RENOVE,<br>REVIVA!</h2>
+          <p data-aos="fade-up" data-aos-delay="100">No Redivivus você encontra ponto de coleta mais perto da sua região pelo smartphone, tablet e computador. Ajude a diminuir a poluição do seu bairro usando Redivivus</p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <!-- End Header -->
+            <a href="login/index.html" id="alogin" class="btn-book-a-table">Fazer Login</a>
+            <span> Ou </span>
+            <a href="login/cadastrar.html" id="acad" class="btn-book-a-table"><i>cadastre-se</i></a>
+            
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+          <img src="assets/img/page-2-removebg-preview 2@3x.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="aprenda" style="background: #8B9A92;">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="assets/img/document (6) 1.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+          <div class="col-md-6">
+            <h2>Primeiros passos para realizar a coleta seletiva dentro da sua casa</h2>
+            <p>
+              <i class="bi bi-check2-all"></i> <span>1º passo:</span> É essencial se educar sobre os tipos de materiais recicláveis. Os principais incluem papel, plástico, vidro e metal.
+              <br> <br>
+              <i class="bi bi-check2-all"></i> <span>2º passo:</span> Inicialmente recomendamos separar dois recipientes, um para materiais recicláveis e outro para materiais não recicláveis que são resíduos de alimentos, papel higiênico, fraldas descartáveis, absorventes, cotonetes, entre outros.
+              <br> <br>
+              <i class="bi bi-check2-all"></i> <span>3º Passo:</span> A limpeza dos materiais recicláveis é muito importante, remover os restos de comida, enxaguar recipientes e garrafas é fundamental para evitar a contaminação de outros materiais durante o processo de reciclagem. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    </section><!-- End Menu Section -->
+    <section style="background: #8B9A92;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+             <i class="bi bi-check2-all"></i> <span>4º Passo:</span> É essencial identificar claramente os recipientes ou sacos usados para separar os materiais recicláveis. Rotule cada recipiente com as respectivas categorias de materiais, como "papel", "plástico", "vidro" e "metal". Isso facilitará a identificação e a separação correta dos materiais recicláveis.
+              <br><br>
+              <i class="bi bi-check2-all"></i> <span>5º Passo:</span> É importante armazenar os materiais recicláveis de forma adequada até o momento da coleta seletiva. Escolha recipientes ou sacos duráveis e resistentes o suficiente para suportar o peso e o volume dos materiais. Mantenha-os em uma área limpa, seca e certifique-se de que os recipientes estejam bem fechados para evitar a entrada de insetos ou mau cheiro.
+              <br><br>
+              <i class="bi bi-check2-all"></i> <span>6º Passo:</span> Existem diferentes sistemas de coleta seletiva que podem ser adotados, dependendo da sua região. Algumas áreas oferecem coleta porta a porta, na qual os materiais recicláveis são coletados diretamente na sua residência em dias específicos. Em outros casos, você pode precisar levar os materiais a pontos de coleta seletiva, como contêineres ou ecopontos, localizados em locais estratégicos da sua comunidade.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="assets/img/Frame 21@2x.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section style="background: #8B9A92;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="assets/img/Frame 19@2x.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+          <div class="col-md-6">
+            <h2>Pontos de Coleta Seletiva</h2>
+            <p class="text-justify">
+              Pontos de coleta seletiva são uma alternativa à coleta feita na porta de casa. Os postos de coleta seletiva, que podem ser mantidos por prefeituras ou pela iniciativa privada, são áreas instaladas em local adequado para o recebimento de descartes. 
+              <br><br>
+              Para os mais diversos tipos de descartes, existe reciclagem. Você sabia que há pontos de coleta seletiva que reciclam óleo, pilhas, lâmpadas, vidro, eletrônicos, produtos químicos e até materiais de construção?
+              <br><br>
+              Quer saber onde tem pontos de coleta próximo a sua residência? Consulte no mapa abaixo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Maps</h2>
+          <p>Encontre o ponto <span>Em um click</span></p>
+
+          <!--<iframe id="map" width='100%' height='400px' src="https://api.mapbox.com/styles/v1/gildevande/cligz4f6g00iw01p1c73ya7nx.html?title=false&access_token=pk.eyJ1IjoiZ2lsZGV2YW5kZSIsImEiOiJjbDgyYmp2b2kwb2RpM3dvM25uM2QxZ3BjIn0.7YJltuO14MOrUeqVXCwsnA&zoomwheel=false#11/40.73/-74" title="Monochrome" style="border:none;"></iframe>-->
+          <style>
+            #map { position: relative ; top: 0; bottom: 0; width: 1200px; margin-right:0px ; height: 900px;touch-action: pan-x pan-y; }
+          </style>
+            <div id="map"></div>
+            <button id="btn-cadastrar-ponto" class="mapboxgl-ctrl-icon">Cadastrar Ponto</button>
+
+
+      <div id="geocoder-container">
+          <input type="text" id="geocoder-input" placeholder="Digite o endereço">
+          <button id="geocoder-button">Pesquisar</button>
+        </div>            
+      </div>
+    </section>
+
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Notícias</h2>
+          <p>Últimas Notícias <span>Sobre</span> Reciclagem</p>
+        </div>
+
+        <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-1.jpg)">
+              
+                <div class="price align-self-start">Motivos para deixar a sacola plástica de lado</div>
+                <p class="description">
+                  A sacola plástica é um item muito comum em nosso dia a dia, mas seu uso excessivo tem causado diversos problemas ambientais. Felizmente, uma alternativa mais sustentável tem se popularizado cada vez mais: a ecobag. Nesta matéria, vamos apresentar alguns motivos pelos quais é importante deixar a sacola plástica de lado e começar a usar ecobags.
+                </p>
+                <br>
+                <a class="btn-ver-mais" href="Deixe-a-sacola.html"><h3>Ver Mais...</h3> </a>
+            </div><!-- End Event item -->
+          
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-2.jpg)">
+              <div class="price align-self-start">Opções ecologicas o dia a dia</div>
+              <p class="description">
+                Você sabia que é possível adotar hábitos mais sustentáveis no nosso dia a dia e contribuir para um mundo mais verde e saudável? Muitos dos produtos que utilizamos diariamente, como sacolas plásticas, copos descartáveis e cotonetes, são extremamente prejudiciais ao meio ambiente e demoram séculos para se decompor. Felizmente, existem alternativas ecológicas para esses produtos, que podem ser adotadas sem prejudicar a nossa rotina.
+              </p>
+              <a class="btn-ver-mais" href="Opcoes-eco.html"><h3>Ver Mais...</h3> </a>
+            </div><!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-3.jpg)">
+              <div class="price align-self-start">Como descartar objetos afiados</div>
+              <p class="description">
+                Descartar objetos afiados, como vidro quebrado, facas velhas ou lâminas de barbear, pode ser um desafio, pois eles podem causar ferimentos sérios para as pessoas que manuseiam o lixo ou para aqueles que trabalham na coleta e tratamento do lixo. Além disso, esses objetos não podem ser simplesmente jogados no lixo comum, pois podem danificar o meio ambiente e prejudicar a saúde pública. Neste artigo, vamos explorar algumas opções seguras e sustentáveis para o descarte de objetos afiados.
+              </p>
+              <a class="btn-ver-mais" href="Descarte-de-afiados.html"><h3>Ver Mais...</h3> </a>
+            </div><!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-4.jpg)">
+              <div class="price align-self-start">Como reciclar móveis usados</div>
+              <p class="description">
+                O descarte de móveis usados pode ser um desafio, pois eles podem ser grandes e pesados, além de muitas vezes conterem materiais que não podem ser simplesmente jogados no lixo comum. No entanto, existem diversas opções para descartar móveis de forma segura e sustentável.
+              </p>
+              <a class="btn-ver-mais" href="Moveis-Usados.html"><h3>Ver Mais...</h3> </a>
+            </div> <!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-5.jpg)">
+              <div class="price align-self-start">Reciclável vs Lixo Comum: Qual a Diferença?</div>
+              <p class="description">
+                Em nossas casas, é comum gerarmos resíduos todos os dias. Alguns desses resíduos podem ser reciclados, enquanto outros não. Saber a diferença entre o que é reciclável e o que é lixo comum é importante para garantir que façamos a separação correta e contribuamos para a preservação do meio ambiente.
+              </p>
+              <a class="btn-ver-mais" href="ReciclaveisVSComuns.html"><h3>Ver Mais...</h3> </a>
+            </div> <!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-6.jpg)">
+              <div class="price align-self-start">Onde Reciclar seus Eletrônicos?</div>
+              <p class="description">
+                Com a rápida evolução da tecnologia, é comum que troquemos nossos dispositivos eletrônicos com certa frequência. Mas o que fazer com os eletrônicos antigos? É importante lembrar que esses aparelhos contêm substâncias tóxicas que podem contaminar o meio ambiente se descartados de maneira inadequada. Felizmente, existem várias opções para reciclar seus eletrônicos de forma segura e sustentável.
+              </p>
+              <a class="btn-ver-mais" href="Descarte-Eletronicos.html"><h3>Ver Mais...</h3> </a>
+            </div> <!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-7.jpg)">
+              <div class="price align-self-start">Mals causados pelo descarte incorreto</div>
+              <p class="description">
+                O descarte incorreto de resíduos é um grande problema ambiental que afeta o mundo todo. Quando jogamos lixo no lugar errado, causamos uma série de danos ao meio ambiente e à saúde pública. Isso inclui o descarte inadequado de lixo eletrônico, plásticos, produtos químicos, medicamentos e outros materiais.
+              </p>
+              <a class="btn-ver-mais" href="Descarte-incorreto.html"><h3>Ver Mais...</h3> </a>
+            </div> <!-- End Event item -->
+
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-8.jpg)">
+              <div class="price align-self-start">Como descartar brinquedos</div>
+              <p class="description">
+                Muitas vezes, os brinquedos são deixados de lado quando as crianças crescem ou perdem o interesse neles. Em vez de jogá-los fora, é possível reciclá-los de forma responsável e ajudar a reduzir o impacto ambiental do descarte de lixo.
+              </p>
+              <a class="btn-ver-mais" href="Brinquedo-Descarte.html"><h3>Ver Mais...</h3> </a>
+            </div> <!-- End Event item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Events Section -->
+    <section>
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                    
+    <!-- ======= AVALIACAO =======-->
+    
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Nos <span>Avalie</span></h2>
+        </div>
+
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+
+          <div class="star-container">
+            <span class="star" onclick="selectStar(1)">&#9733;</span>
+            <span class="star" onclick="selectStar(2)">&#9733;</span>
+            <span class="star" onclick="selectStar(3)">&#9733;</span>
+            <span class="star" onclick="selectStar(4)">&#9733;</span>
+            <span class="star" onclick="selectStar(5)">&#9733;</span>
+            <input type="hidden" id="star-input" name="star" value="0">
+          </div>
+    
+          <style>
+            .star {
+              cursor: pointer;
+              font-size: 25px;
+            }
+    
+            .star.selected {
+              color: gold;
+            }
+    
+            .star.disabled {
+              color: rgba(0, 0, 0, 0.3);
+              pointer-events: none;
+            }
+    
+            .msg {
+              color: red;
+            }
+          </style>
+  	      <br>
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" placeholder="Comentário" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Carregando...</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Sua mensagem foi enviada com sucesso! Obrigado pela Avaliação.</div>
+          </div>
+          <div class="text-center"><button type="submit">Enviar</button></div>
+        </form><!--End Contact Form -->
+
+      </div>
+    </section><!-- End Contact Section -->
+
+
+
+ <!--
+    <div class="row" id="conteudo"></div>
+    <div class="row" id="comentarios"></div>
+    <div class="testimonial-item">
+
+  <section id="formulario" >
+   
+  </section>
+
+  <section id="comentarios">-->
+    <!-- Aqui serão exibidos os comentários --><!--
+  </section>-->
+
+  <!-- <section class="bg-comentario">
+    <div class="avalie" id="avalie">
+      <h2>Deixe sua Avaliação</h2>
+    </div>
+    <div class="comment-container">
+      <form id="formulario" method="POST" role="form" class="salvar_comentario p-3 p-md-4">
+        <div class="star-container">
+          <span class="star" onclick="selectStar(1)">&#9733;</span>
+          <span class="star" onclick="selectStar(2)">&#9733;</span>
+          <span class="star" onclick="selectStar(3)">&#9733;</span>
+          <span class="star" onclick="selectStar(4)">&#9733;</span>
+          <span class="star" onclick="selectStar(5)">&#9733;</span>
+          <input type="hidden" id="star-input" name="star" value="0">
+        </div>
+  
+        <style>
+          .star {
+            cursor: pointer;
+            font-size: 25px;
+          }
+  
+          .star.selected {
+            color: gold;
+          }
+  
+          .star.disabled {
+            color: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+          }
+  
+          .msg {
+            color: red;
+          }
+        </style>
+  
+        <div class="row">
+          <div class="col-xl-12 form-group">
+            <br>
+            <input type="text" name="name" class="form-control form-coment-name" id="name" placeholder="Digite seu nome" required>
+            <br>
+            <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Digite seu comentário"></textarea>
+            <br>
+          </div>
+          <div class="col-xl-12">
+            <button type="submit" class="btn btn-primary btn-ver-mais">Enviar Comentário</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="comentarios">
+    --><!-- Aqui serão exibidos os comentários recentes --><!--
+    </div>
+  
+  </section> -->
+</div></div></div></div></div></section>
+ 
+  
+   
+
+  <!-- End Testimonials Section -->
+  <!-- SOBRENOS -->
+    <section id="sobrenos" class="chefs section-bg">
+      <div class="container" data-aos="fade-up">
+    
+        <div class="section-header">
+          <h2>Quem Somos?</h2>
+          <p>Nosso <span>Grupo</span> </p>
+        </div>
+    
+        <div class="row gy-4">
+    
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="assets/img/desenvolvedores/des-1.png" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/euanacarolinec/"><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Ana Caroline</h4>
+                <span>Designer e Desenvolvedora</span>
+                <p>Ana Caroline, 23 anos, confeiteira e estudante de desenvolvimento de sistemas na Etec da Zona Leste</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
+    
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="assets/img/desenvolvedores/des-3.png" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gugu_ig/"><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Gustavo Iglesias</h4>
+                <span>Estudante: Técnico em Desenvovimento de Sistemas</span>
+                <p>Sou o Gustavo, tenho 18 anos e estudante de desenvolvimento de sistemas na Etec Zona Leste.</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
+    
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="assets/img/desenvolvedores/des-4.png" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gil_cangussu/"><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Gildevande Cangussu</h4>
+                <span>Estudante: Técnico em Desenvovimento de Sistemas</span>
+                <p>Sou o Gil, tenho 22 anos. Estudo atualmente na Etec, e este foi um trabalho feito com muita dedicação e aperfeiçoamento para chegar aos resultados aqui apresentado. </p>
+                <p>A tecnologia foi algo que me encantou a partir do momento em que comecei a ter o contato, apesar das dificuldades enfrentadas por mim ao decorrer no curso no aprendizado de toda grade, esse foi o primeiro contato com linhas de código, programação. E a partir daqui, creio que posso evoluir com mais 'facilidade', graças ao ensino que foi oferecido pela rede de ensino CPS e todos os educadores envolvidos neste processo.</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="assets/img/desenvolvedores/des-5.png" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/_raivex_09/"><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Henrique Xavier</h4>
+                <span>Desenvolvedor</span>
+                <p>Henrique Xavier, 17 anos, amante dos games e leitor ávido de mangás, támbem estudante de desenvolvimento de sistemas na Etec da Zona Leste.</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
+    
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="assets/img/desenvolvedores/des-2.png" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/_yazmiiim/"><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Yasmim</h4>
+                <span>Estudante: Técnico em Desenvovimento de Sistemas</span>
+                <p>Yasmim, 19 anos, estudante de desenvolvimento de sistemas na Etec Zona Leste</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
+    
+        </div>
+    
+      </div>
+    </section><!-- End Chefs Section -->
+    
+    <!-- ======= Contact Section ======= -->
+    
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        
+
+        
+        <!--
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contato</h4>
+            <p>
+              <strong>Telefone:</strong> +55 (11) 99999-0000 <br>
+            </p>
+          </div>
+          
+          
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Endereço</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022 - US<br>
+            </p>
+          </div> 
+
+        </div>
+        
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+
+          <div>
+            <br>
+            <p>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          
+          <i class="bi bi-clock icon"></i> 
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+              Sunday: Closed
+            </p>
+          </div> 
+        </div>
+      
+      
+        <div class="col-lg-3 col-md-6 footer-links">
+          <div>
+            <br>
+            <img src="assets/img/qr-code.png" alt="QR Code" width="200">
+          </div>
+        </div> 
+-->
+          
+        
+        
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Redivivus</span></strong>. Todos os Direitos Reservado
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+  
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+
+  <!-- CONFIGURACAO DAS ESTRELAS(avaliar) 
+  <script>
+    function selectStar(star) {
+      // Remove a classe "selected" de todas as estrelas
+      let stars = document.getElementsByClassName('star');
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('selected');
+      }
+  
+      // Adiciona a classe "selected" às estrelas selecionadas
+      for (let i = 0; i < star; i++) {
+        stars[i].classList.add('selected');
+      }
+  
+      // Atualiza o valor do input hidden com a nota selecionada
+      document.getElementById('star-input').value = star;
+    }
+  
+    function setStarsClickable(clickable) {
+      let stars = document.getElementsByClassName('star');
+      for (let i = 0; i < stars.length; i++) {
+        if (clickable) {
+          stars[i].classList.remove('disabled');
+        } else {
+          stars[i].classList.add('disabled');
+        }
+      }
+    }
+  </script>-->
+
+
+<!-- Script sdkJSMap -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.js'></script>
+<script>
+  
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lsZGV2YW5kZSIsImEiOiJjbDgyYmp2b2kwb2RpM3dvM25uM2QxZ3BjIn0.7YJltuO14MOrUeqVXCwsnA';
+  const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/gildevande/cligz4f6g00iw01p1c73ya7nx',  // Estilo do mapa (pode ser alterado)//
+      center: [-46.4841649, -23.5434179], // Coordenadas do centro do mapa
+      zoom: 15, // Nível de zoom inicial do mapa
+    
+    
+    });
+  
+    
+    const geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+  });
+
+  map.addControl(geocoder);
+
+geocoder.on('result', function(e) {
+  const endereco = e.result.text;
+  const latitude = e.result.center[1].toFixed(6);
+  const longitude = e.result.center[0].toFixed(6);
+
+  preencherFormulario(endereco, latitude, longitude);
+});
+
+function preencherFormulario(endereco, latitude, longitude) {
+  document.getElementById('endereco').value = endereco;
+  document.getElementById('latitude').value = latitude;
+  document.getElementById('longitude').value = longitude;
+}
+// Adicione o controle personalizado
+var btnCadastrarPonto = document.getElementById('btn-cadastrar-ponto');
+btnCadastrarPonto.addEventListener('click', function() {
+  // Lógica para abrir o formulário de cadastro
+  abrirFormularioCadastro();
+});
+
+function abrirFormularioCadastro() {
+// Crie um elemento de formulário dinamicamente
+var form = document.createElement('form');
+form.id = 'form-cadastro';
+
+// Adicione os campos do formulário
+form.innerHTML = `
+  <label for="nome">Nome do Ponto de Coleta:</label>
+  <input type="text" id="nome" name="nome" required><br><br>
+  
+  <label for="endereco">Endereço:</label>
+  <input type="text" id="endereco" name="endereco" required><br><br>
+  
+  <label for="descricao">Descrição:</label>
+  <textarea id="descricao" name="descricao" required></textarea><br><br>
+  
+  <input type="submit" value="Cadastrar">
+`;
+
+// Adicione o formulário ao elemento de controle personalizado
+var control = new mapboxgl.Control({ element: form });
+map.addControl(control);
+
+// Defina a ação de envio do formulário
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  // Obtenha os valores dos campos do formulário
+  var nome = document.getElementById('nome').value;
+  var endereco = document.getElementById('endereco').value;
+  var descricao = document.getElementById('descricao').value;
+  
+  // Converta o endereço em coordenadas usando uma API de geocodificação (por exemplo, Mapbox Geocoding API)
+  // ...
+
+  // Execute a lógica para cadastrar o novo ponto de coleta
+  cadastrarPontoColeta(nome, endereco, descricao, latitude, longitude);
+});
+}
+
+  /*/const popup = new mapboxgl.Popup({ closeOnClick: false })
+.setLngLat([-46.456659434045385,
+            -23.513946027046845])
+.setHTML('<h1>"endereco": "Av. Ribeirão Jacu, n° 201 (Baixo do Viaduto Jacu Pêssego)"</h1>')
+.addTo(map);
+// Criar um botão para expandir o pop-up/*/
+
+
+// Função para criar um novo pop-up
+function createPopup(lngLat, endereco, cep, horario, residuos) {
+const expandButton = document.createElement('button');
+expandButton.innerHTML = 'Expandir';
+
+const expandedContent = document.createElement('div');
+expandedContent.innerHTML = `
+<p style="font-size: 10px;"><strong style="font-size: 12px;">Endereço:</strong> ${endereco}</p>
+<p style="font-size: 10px;"><strong style="font-size: 12px;">CEP:</strong> ${cep}</p>
+<p style="font-size: 10px;"><strong style="font-size: 12px;">Horário:</strong> ${horario}</p>
+
+<p style="font-size: 10px;"><strong style="font-size: 12px;">Resíduos:</strong> ${residuos.join(', ')}</p>
+`;
+
+const popup = new mapboxgl.Popup({ closeOnClick: false })
+.setLngLat(lngLat)
+.setDOMContent(expandButton)
+.addTo(map);
+
+expandButton.addEventListener('click', () => {
+popup.setDOMContent(expandedContent);
+});
+
+const closeButton = document.createElement('button');
+closeButton.innerHTML = 'Fechar';
+closeButton.addEventListener('click', () => {
+popup.remove();
+});
+
+expandedContent.appendChild(closeButton);
+}
+
+// Criar múltiplos pop-ups com informações adicionais
+createPopup([-46.456659434045385,
+            -23.513946027046845], "Av. Ribeirão Jacu, n° 201 (Baixo do Viaduto Jacu Pêssego)", "08050-420", "De segunda a sexta-feira das 08h às 17h, aos sábados das 09h às 14h", ["papel", "plástico"]);
+createPopup([ -46.48281349756469,
+            -23.516907455245917], "Estr. de Mogi das Cruzes, 1860 - Vila Rio Branco - São Paulo - SP", "03682-130", "", ["papel", "plástico",  "metal","vidro"]);
+createPopup([ -46.482705481530495,
+            -23.52309205973849], "R. Agreste de Itabaiana, 590 - Vila União (Zona Leste) - São Paulo - SP", "03683-000", "Segunda a sábado, das 6h às 22h e aos domingos e feriados das 6h às 18h", ["papel", "plástico",  "metal","alumínio", "vidro",  "resíduos de construções civis"]);
+createPopup([ -46.47616188511209,
+            -23.529200737762892], "Av. Imperador, 1900 - São Miguel - São Paulo - SP", "08050-000", "Terça a Sábado das 7h às 18h. Domingo das 7h às 13h", ["Óleo de cozinha"]);
+
+const geocoderInput = document.getElementById('geocoder-input');
+    const geocoderButton = document.getElementById('geocoder-button');
+
+    geocoderButton.addEventListener('click', () => {
+      const address = geocoderInput.value;
+
+      if (address.trim() !== '') {
+        geocodeAddress(address);
+      }
+    });
+
+    function geocodeAddress(address) {
+      const geocoderUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxgl.accessToken}`;
+
+      fetch(geocoderUrl)
+        .then(response => response.json())
+        .then(data => {
+          const features = data.features;
+          if (features.length > 0) {
+            const point = features[0].geometry.coordinates;
+            const popup = new mapboxgl.Popup({ closeOnClick: false })
+              .setLngLat(point)
+              .setHTML('<h1>Ponto mais próximo</h1>')
+              .addTo(map);
+          } else {
+            alert('Endereço não encontrado.');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao geocodificar o endereço:', error);
+        });
+    }
+</script>
+<script src="script."></script>
+
+ 
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  
+  <!-- Verifica se o navegador suporta Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+          console.log('ServiceWorker registrado com sucesso:', registration);
+        }, function(error) {
+          console.log('Falha ao registrar o ServiceWorker:', error);
+        });
+      });
+    }
+  </script>
+  
+
+  <!--======================== ARQUIVO PARA CHAMAR AJAX PARA ENVIAR O COMENTARIO DO .PHP PARA O FORMULARIO DO HTML==================================-->
+ 
+
+  
+  <script>
+    // Captura o evento de clique no botão
+    document.querySelector('.btn-ver-mais').addEventListener('click', function(event) {
+      // Evita o comportamento padrão do formulário (envio tradicional)
+      event.preventDefault();
+  
+      // Executa ação desejada aqui
+      alert('Botão Enviar Comentário clicado!');
+      
+      // Ou você pode enviar os dados do formulário usando uma requisição assíncrona (AJAX)
+      // Exemplo usando Fetch API:
+      /*
+      fetch('salvar_comentario.php', {
+        method: 'POST',
+        body: new FormData(document.getElementById('formulario'))
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert(data); // Exibe a resposta do servidor
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+      */
+    });
+  </script>
+  
+  <script>
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita que o formulário seja enviado
+  
+      var star = document.getElementById('star-input').value;
+      var name = document.getElementById('name').value;
+      var comment = document.getElementById('comment').value;
+  
+      if (star != 0 && name !== '' && comment !== '') {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'salvar_comentario.php', true); // Substitua "nome_do_arquivo.php" pelo nome do arquivo PHP onde você colocou o código acima
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var resposta = xhr.responseText;
+            document.getElementById('mensagem').innerHTML = '<div class="msg">' + resposta + '</div>';
+          } else if (xhr.readyState === 4 && xhr.status !== 200) {
+            document.getElementById('mensagem').innerHTML = '<div class="msg">Erro na requisição. Status: ' + xhr.status + '</div>';
+          }
+        };
+        xhr.send('star=' + encodeURIComponent(star) + '&name=' + encodeURIComponent(name) + '&comment=' + encodeURIComponent(comment));
+      } else {
+        document.getElementById('mensagem').innerHTML = '<div class="msg">Preencha todos os campos!</div>';
+      }
+    });
+  
+    function selectStar(star) {
+      var starInput = document.getElementById('star-input');
+      starInput.value = star;
+      var stars = document.getElementsByClassName('star');
+      for (var i = 0; i < stars.length; i++) {
+        if (i < star) {
+          stars[i].classList.add('selected');
+        } else {
+          stars[i].classList.remove('selected');
+        }
+      }
+    }
+  </script>
+
+<script>
+  // Função para buscar os comentários do banco de dados e exibi-los na página
+  function exibirComentarios() {
+    fetch('buscar_comentarios.php')
+      .then(response => response.json())
+      .then(data => {
+        const comentariosDiv = document.getElementById('comentarios');
+        comentariosDiv.innerHTML = '';
+
+        data.forEach(comentario => {
+          const comentarioHTML = `
+            <div class="comentario">
+              <div class="estrelas">${comentario.star}</div>
+              <div class="nome">${comentario.name}</div>
+              <div class="texto">${comentario.comment}</div>
+            </div>
+          `;
+          comentariosDiv.innerHTML += comentarioHTML;
+        });
+      })
+      .catch(error => console.error('Erro ao buscar os comentários:', error));
+  }
+
+  // Função para selecionar a quantidade de estrelas
+  function selectStar(star) {
+    const starInput = document.getElementById('star-input');
+    starInput.value = star;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((starEl, index) => {
+      if (index < star) {
+        starEl.classList.add('selected');
+      } else {
+        starEl.classList.remove('selected');
+      }
+    });
+  }
+
+  // Função para enviar o formulário
+  function enviarFormulario(event) {
+    event.preventDefault();
+
+    const starInput = document.getElementById('star-input');
+    const nameInput = document.getElementById('name');
+    const commentInput = document.getElementById('comment');
+
+    const formData = new FormData();
+    formData.append('star', starInput.value);
+    formData.append('name', nameInput.value);
+    formData.append('comment', commentInput.value);
+
+    fetch('adicionar_comentario.php', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert(data.message);
+          nameInput.value = '';
+          commentInput.value = '';
+          starInput.value = '0';
+          const stars = document.querySelectorAll('.star');
+          stars.forEach(starEl => starEl.classList.remove('selected'));
+          exibirComentarios();
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch(error => console.error('Erro ao adicionar o comentário:', error));
+  }
+
+  // Chamar a função para exibir os comentários ao carregar a página
+  exibirComentarios();
+
+  // Adicionar o evento de submit ao formulário
+  const formulario = document.getElementById('formulario');
+  formulario.addEventListener('submit', enviarFormulario);
+</script>
+</body>
+
+</html>

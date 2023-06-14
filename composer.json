@@ -1,0 +1,21 @@
+{
+    "name": "gilde/redivivus3.0",
+    "description": "Site desenvolvido para as pessoas encontrarem pontos de coleta proximo a sua residencia, colaborando assim com o meio ambiente",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "^2.9",
+        "phpunit/phpunit": "^9.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gilde\\Redivivus30\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Seu nome de usuário",
+            "email": "gildevande.silva@etec.sp.gov.br"
+        }
+    ]
+}

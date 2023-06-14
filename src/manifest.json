@@ -1,0 +1,16 @@
+{
+  "name": "RediVivus",
+  "short_name": "RediVivus",
+  "description": "Descrição do seu site",
+  "icons": [
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
